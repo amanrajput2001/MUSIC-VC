@@ -51,8 +51,8 @@ from core.decorators import register, language, handle_error, only_admins
 
 REPO = """
  **Music Player**
-- Repo: [GitHub](https://github.com/LEGEND-OS/MUSIC-VC)
-- Owner: @The_LegendBoy
+- Repo: (REPO is private)
+- Owner: @itsamanrajput
 """
 
 
@@ -191,7 +191,7 @@ async def skip_track(_, message: Message, lang):
     chat_id = message.chat.id
     group = get_group(chat_id)
     if group["loop"]:
-        await skip_stream(group["now_playing"], lang)
+        await skip_stream(group["*•.♡ 𝐧𝐨𝐰 𝐩𝐥𝐚𝐲𝐢𝐧𝐠 ♡.•*"], lang)
     else:
         queue = get_queue(chat_id)
         if len(queue) > 0:
@@ -355,10 +355,10 @@ async def loop_stream(_, message: Message, lang):
     group = get_group(chat_id)
     if group["loop"] == True:
         set_group(chat_id, loop=False)
-        k = await message.reply_text(lang["loopOff"])
+        k = await message.reply_text(lang["l໐໐໐p໐ff"])
     elif group["loop"] == False:
         set_group(chat_id, loop=True)
-        k = await message.reply_text(lang["loopOn"])
+        k = await message.reply_text(lang["l໐໐໐p໐ຖ"])
     await delete_messages([message, k])
 
 
@@ -376,10 +376,10 @@ async def switch_mode(_, message: Message, lang):
     group = get_group(chat_id)
     if group["is_video"]:
         set_group(chat_id, is_video=False)
-        k = await message.reply_text(lang["audioMode"])
+        k = await message.reply_text(lang["ミ★ 𝘢𝘶𝘥𝘪𝘰𝘔𝘰𝘥𝘦 ★彡"])
     else:
         set_group(chat_id, is_video=True)
-        k = await message.reply_text(lang["videoMode"])
+        k = await message.reply_text(lang["ıllı⭐🌟 v͙i͙d͙e͙o͙M͙o͙d͙e͙ 🌟⭐ıllı"])
     await delete_messages([message, k])
 
 
@@ -427,12 +427,12 @@ async def export_queue(_, message: Message, lang):
         with open(filename, "w") as file:
             file.write(data)
         await message.reply_document(
-            filename, caption=lang["queueExported"] % len(queue)
+            filename, caption=lang[" 𝐪𝐮𝐞𝐮𝐞𝐄𝐱𝐩𝐨𝐫𝐭𝐞𝐝 "] % len(queue)
         )
         os.remove(filename)
         await delete_messages([message])
     else:
-        k = await message.reply_text(lang["queueEmpty"])
+        k = await message.reply_text(lang[" Qᴜᴇᴜᴇᴇᴍᴘᴛʏ "])
         await delete_messages([message, k])
 
 
@@ -455,7 +455,7 @@ async def import_queue(_, message: Message, lang):
     try:
         data = json.loads(data_str)
     except json.JSONDecodeError:
-        k = await message.reply_text(lang["invalidFile"])
+        k = await message.reply_text(lang[" 𝐈𝐧𝐯𝐚𝐥𝐢𝐝𝐟𝐢𝐥𝐞 "])
         return await delete_messages([message, k])
     try:
         temp_queue = []
@@ -464,7 +464,7 @@ async def import_queue(_, message: Message, lang):
             song.title = song_dict["title"]
             temp_queue.append(song)
     except:
-        k = await message.reply_text(lang["invalidFile"])
+        k = await message.reply_text(lang["𝐈𝐧𝐯𝐚𝐥𝐢𝐝𝐟𝐢𝐥𝐞"])
         return await delete_messages([message, k])
     group = get_group(chat_id)
     queue = get_queue(chat_id)
@@ -513,15 +513,15 @@ async def import_playlist(_, message: Message, lang):
     else:
         text = extract_args(message.text)
     if text == "":
-        k = await message.reply_text(lang["notFound"])
+        k = await message.reply_text(lang["ɳσƚϝσυɳԃ"])
         return await delete_messages([message, k])
     if "youtube.com/playlist?list=" not in text:
-        k = await message.reply_text(lang["invalidFile"])
+        k = await message.reply_text(lang["𝐈𝐧𝐯𝐚𝐥𝐢𝐝𝐟𝐢𝐥𝐞"])
         return await delete_messages([message, k])
     try:
         temp_queue = get_youtube_playlist(text, message)
     except:
-        k = await message.reply_text(lang["notFound"])
+        k = await message.reply_text(lang["★ ɳσƚϝσυɳԃ ★"])
         return await delete_messages([message, k])
     group = get_group(chat_id)
     queue = get_queue(chat_id)
