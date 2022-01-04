@@ -7,11 +7,11 @@
 [![Deploy on Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/amanrajput2001/MUSIC-VC)
 
 
-## [REPL](https://t.me/LEGEND_STRINGSESSIONBOT)
+## [REPL]()
 ## ☁️ <a name="self_host"></a>Self Host
 
 ```bash
-$ git clone https://github.com/LEGEND-OS/Music-VC
+$ git clone 
 $ cd MusicPlayer
 $ cp sample.env .env
 < edit .env with your own values >
